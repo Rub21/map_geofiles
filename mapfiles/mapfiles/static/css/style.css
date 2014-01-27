@@ -1,0 +1,35 @@
+		html, body, #map{
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;	
+			font-family: Arial, sans-serif;
+			font-color: #38383;
+		}
+
+
+.content_button{
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 250px;
+	height: 250px;
+	max-width: 250px;
+	display: block;
+	background-color: rgba(0,0,0,0.75);
+}
+
+
+#sidebar{
+	position: absolute;
+	top: 2px;
+	width: 250px;
+	height: 400px;
+	z-index: 5;
+	display: block;
+	background-color: rgba(0,0,0,0.75);
+}
+
+.leaflet-control-zoom{
+	left: 250px;
+}
