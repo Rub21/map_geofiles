@@ -20,7 +20,7 @@
 
             }
 
-            $("#eval_tittles").append('<li><input type="checkbox"  name="tittle" value="' + tittles[0][i] + '">' + tittles[0][i] + '(' + tittles[1][i] + ')</li>');
+            $("#eval_tittles").append('<li><input type="radio" name="tittle_id" value="' + tittles[0][i] + '"><input type="checkbox"  name="tittle" value="' + tittles[0][i] + '">' + tittles[0][i] + '(' + tittles[1][i] + ')</li>');
 
 
 

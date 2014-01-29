@@ -91,7 +91,7 @@ def xlsx2geojson(filepath,name_file):
    	nt= nt[0] + '.js'
 	json.dump(geojson, open(os.path.join(filepath,nt), 'w'))
 
-def xlsx2geojson_parameters(filepath,name_file,fields,lat,lng):
+def xlsx2geojson_parameters(filepath,name_file,fields,field_id,lat,lng):
 	wb = open_workbook(os.path.join(filepath,name_file))
 	#print wb
 	geojson = { "type": "FeatureCollection", "features": [] }
@@ -105,10 +105,10 @@ def xlsx2geojson_parameters(filepath,name_file,fields,lat,lng):
 	 			posicion_lng = col
 	 		if set(values_title[col]) == set('lat'):
 	 			posicion_lat = col
-	 	print values_title
-	 	print len(values_title)
-	 	print posicion_lng
-	 	print posicion_lat
+	 	#print values_title
+	 	#print len(values_title)
+	 	#print posicion_lng
+	 	#print posicion_lat
 
 	for s in wb.sheets():
 		for row in range(s.nrows):
@@ -117,6 +117,7 @@ def xlsx2geojson_parameters(filepath,name_file,fields,lat,lng):
 			else:	
 		 		point = {
 		        	"type": "Feature",
+		        	"field_id" : field_id,
 		        	"geometry": {
 		            	"type": 'Point',
 		            	"coordinates": []
@@ -127,20 +128,20 @@ def xlsx2geojson_parameters(filepath,name_file,fields,lat,lng):
 		 		for id_title in range(len(fields)):
 		 			posicion=values_title.index(fields[id_title])
 		 			point['properties'][fields[id_title]] = s.cell(row,posicion).value
-		 			print point['properties'][fields[id_title]] 
+		 			#print point['properties'][fields[id_title]] 
 		 			#if posicion_lat == id_title:fields
 		 		posicion_lat=values_title.index(lat)
 		 		posicion_lng=values_title.index(lng)
-		 		point['geometry']['coordinates'].append(s.cell(row,posicion_lat).value)
 		 		point['geometry']['coordinates'].append(s.cell(row,posicion_lng).value)
+		 		point['geometry']['coordinates'].append(s.cell(row,posicion_lat).value)
 		 			#elif posicion_lng == id_title:
 		 				 #point['geometry']['coordinates'].append(s.cell(row,id_title).value) 		
 					#else:
 					#	 point['properties'][values_title[id_title]] = s.cell(row,id_title).value				 
 				geojson['features'].append(point)		 
 
-	ts = time.time()
-	print ts
+	#ts = time.time()
+	#print ts
 	print 'saving geojson'
 	nt= str(name_file).split('.')
    	nt= nt[0] + '.js'

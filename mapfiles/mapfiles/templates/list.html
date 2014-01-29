@@ -7,15 +7,29 @@
             <link href="{{STATIC_URL}}lib/dist/css/bootstrap.css" rel="stylesheet">
             
             <!--<link rel="stylesheet" href="{{STATIC_URL}}lib/leaflet.css"  rel="stylesheet"/>-->
-                <script src='http://api.tiles.mapbox.com/mapbox.js/v1.6.0/mapbox.js'></script>
-        <link href='http://api.tiles.mapbox.com/mapbox.js/v1.6.0/mapbox.css' rel='stylesheet' />
+            <script src='http://api.tiles.mapbox.com/mapbox.js/v1.6.0/mapbox.js'></script>
+            <link href='http://api.tiles.mapbox.com/mapbox.js/v1.6.0/mapbox.css' rel='stylesheet' />
             
             <link href="{{STATIC_URL}}css/style.css" rel="stylesheet">
         </head>
         <body>
+            <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Geosolution</a>
+                    </div>
+                </div>
+            </div>
             <!-- List of uploaded documents -->
             <div id='sidebar'>
-                <div class="well">
+                
+                <!-- <div class="well">
                     {% if documents %}
                     <ul id='up_files'>
                         {% for document in documents %}
@@ -25,22 +39,28 @@
                     {% else %}
                     <p>No documents.</p>
                     {% endif %}
-                </div>
-                
-                <!-- Upload form. Note enctype attribute! -->
-                <div class="well">
-                    <form action="{% url list %}" method="post" enctype="multipart/form-data">
+                </div>-->
+                <form action="{% url list %}" method="post" enctype="multipart/form-data">
+                    <!-- Upload form. Note enctype attribute! -->
+                    <div class="well">
+                        <h5>suba sus archivos en formatos xlsx, shp ,csv, kml, geojson</h5>
+                        
                         {% csrf_token %}
-                        <p>{{ form.non_field_errors }}</p>
+                        
+                     
+                            <div style="color:#FE0002">
+                                {{ form.non_field_errors }}
+                            </div>                         
                         <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
                         <p>
                         {{ form.docfile.errors }}
                         {{ form.docfile }}
-                        </p>                        
-                        <p><input type="submit" value="Subir" /></p>
-                    </form>
-                </div>
-                
+                        </p>
+                        
+                        
+                    </div>
+                    <p><input type="submit" value="Subir" class="btn btn-primary"  /></p>
+                </form>
             </div>
             <div id="map"></div>
         </body>

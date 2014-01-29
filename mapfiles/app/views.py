@@ -73,18 +73,24 @@ def listdetails(request):
 
 def mapping(request):
     if request.method == 'POST':
-        fields = request.POST.getlist('tittle')        
-        print fields
+        fields = request.POST.getlist('tittle') 
+        field_id = request.POST.get('tittle_id')   
+        print field_id     
+        #print fields
         lat=request.POST.get('latitud') 
-        print lat
+        #print lat
         lng=request.POST.get('longitud') 
-        print lng
+        #print lng
 
         filepath = request.session.get('filepath')
         name_file = request.session.get('name_file')
 
-        functions.xlsx2geojson_parameters(filepath,name_file,fields,lat,lng)
-        context = {'favorite': settings.MEDIA_ROOT}
-      
-        return render_to_response('mapping.html',context,context_instance=RequestContext(request))
-
+        functions.xlsx2geojson_parameters(filepath,name_file,fields,field_id,lat,lng)
+        name_dir=name_file.split(".")
+        name_file=name_dir[0]
+        context_url = {'url': settings.MEDIA_ROOT}
+        #print context_url
+        context_file = {'name_file': name_file}
+        return render_to_response('mapping.html',context_file,context_instance=RequestContext(request))
+    else:
+        return render_to_response('mapping.html',context_instance=RequestContext(request))

@@ -22,14 +22,24 @@
 
 #sidebar{
 	position: absolute;
-	top: 2px;
+	top: 60px;
 	width: 250px;
-	height: 400px;
+	height: auto;
 	z-index: 5;
 	display: block;
 	background-color: rgba(0,0,0,0.75);
+	border-radius:4px;
 }
 
 .leaflet-control-zoom{
 	left: 250px;
+	top: 50px;
 }
+
+.navbar{
+	background-color: rgba(0,0,0,0.75);
+}
+
+.well{margin-bottom: 5px !important;}
+
+.btn{margin-left: 15px;}

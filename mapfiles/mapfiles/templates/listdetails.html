@@ -13,11 +13,24 @@
             <link href="{{STATIC_URL}}css/style_listdetails.css" rel="stylesheet">
         </head>
         <body>
+            <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Geosolution</a>
+                    </div>
+                </div>
+            </div>
             <!-- List of uploaded documents -->
             <p id="tittles" style="display:none">{{array_headers}}</p>
             <div id='sidebar'>
                 <form action="{% url mapping %}" method="post" enctype="multipart/form-data">
-                     {% csrf_token %}
+                    {% csrf_token %}
                     <div class="well">
                         <h5>Seleccione la Latitud , Longitud  y los campos del archivo </h5>
                         <div class="row">

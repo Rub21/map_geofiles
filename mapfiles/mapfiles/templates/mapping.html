@@ -7,18 +7,67 @@
             <link href="{{STATIC_URL}}lib/dist/css/bootstrap.css" rel="stylesheet">
             
             <!--<link rel="stylesheet" href="{{STATIC_URL}}lib/leaflet.css"  rel="stylesheet"/>-->
-                <script src='http://api.tiles.mapbox.com/mapbox.js/v1.6.0/mapbox.js'></script>
-        <link href='http://api.tiles.mapbox.com/mapbox.js/v1.6.0/mapbox.css' rel='stylesheet' />
+            <script src='http://api.tiles.mapbox.com/mapbox.js/v1.6.0/mapbox.js'></script>
+            <link href='http://api.tiles.mapbox.com/mapbox.js/v1.6.0/mapbox.css' rel='stylesheet' />
             
-            <link href="{{STATIC_URL}}css/style.css" rel="stylesheet">
+            <link href="{{STATIC_URL}}css/style_mapping.css" rel="stylesheet">
         </head>
         <body>
-            <!-- List of uploaded documents -->
-            <div id='sidebar'>
-                
+            <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Geosolution</a>
+                    </div>
+                    <div class="collapse navbar-collapse  pull-right">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a data-toggle="modal" href="#myModal"   id="share">Compartir este mapa</a></li>
+                        </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
                 </div>
-                
-                        <div id="map"></div>
+            </div>
+            <div id="name_file" style="display:none">{{name_file}}</div>
+            <div id='sidebar'>
+                <h5>Listado de Puntos:</h5>
+                <ul id="data_items">
+                </ul>
+            </div>
+            
+            <div id="map"></div>
+
+
+
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">Comparte este mapa a través de la URL:</h4>
+        </div>
+        <div class="modal-body">
+          <input type="text" id="text_share" class="input-large"  name="fname" style="width:400px">
+        </div>
+        <div class="modal-footer">
+          <a href="#" data-dismiss="modal" class="btn">Close</a>
+        
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
         </body>
         <!-- Leafle +geocsv  JS files -->
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -28,6 +77,6 @@
         <script src="{{STATIC_URL}}lib/dist/js/bootstrap.min.js"></script>
         <!-- End bootstrap JS files -->
         <!-- Custom JS -->
-        <script src="{{STATIC_URL}}js/app.js"></script>
+        <script src="{{STATIC_URL}}js/app_mapping.js"></script>
         <!-- End Custom JS -->
     </html>
